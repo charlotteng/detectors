@@ -3,7 +3,7 @@ from annotator.midas import MidasDetector
 from annotator.hed import HEDdetector, nms
 from annotator.mlsd import MLSDdetector
 from annotator.openpose import OpenposeDetector
-from annotator.uniformer import UniformerDetector
+#from annotator.uniformer import UniformerDetector
 from annotator.util import resize_image, HWC3
 
 def create_detector(model_name): 
@@ -14,7 +14,7 @@ def create_detector(model_name):
         'hed': HEDdetector(),
         'scribble': 'no detector required',
         'openpose': OpenposeDetector(),
-        'seg': UniformerDetector(),
+        #'seg': UniformerDetector(),
         'depth': MidasDetector(),
         'normal': MidasDetector()
     }
