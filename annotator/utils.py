@@ -1,10 +1,9 @@
-from canny import CannyDetector
-from midas import MidasDetector
-from hed import HEDdetector, nms
-from mlsd import MLSDdetector
-from openpose import OpenposeDetector
-from uniformer import UniformerDetector
-from util import resize_image, HWC3
+from annotator.canny import CannyDetector
+from annotator.midas import MidasDetector
+from annotator.hed import HEDdetector, nms
+from annotator.mlsd import MLSDdetector
+from annotator.openpose import OpenposeDetector
+from annotator.uniformer import UniformerDetector
 
 import numpy as np
 import cv2
