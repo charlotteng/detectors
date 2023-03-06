@@ -1,10 +1,10 @@
-from .annotator.canny import CannyDetector
-from .annotator.midas import MidasDetector
-from .annotator.hed import HEDdetector, nms
-from .annotator.mlsd import MLSDdetector
-from .annotator.openpose import OpenposeDetector
-from .annotator.uniformer import UniformerDetector
-from .annotator.util import resize_image, HWC3
+from annotator.canny import CannyDetector
+from annotator.midas import MidasDetector
+from annotator.hed import HEDdetector, nms
+from annotator.mlsd import MLSDdetector
+from annotator.openpose import OpenposeDetector
+from annotator.uniformer import UniformerDetector
+from annotator.util import resize_image, HWC3
 
 def create_detector(model_name): 
     
@@ -124,9 +124,3 @@ def dynamic_canny_threshold(input_image):
     low_threshold = 0.5* high_threshold
 
     return low_threshold, high_threshold
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
