@@ -6,6 +6,8 @@ from annotator.openpose import OpenposeDetector
 #from annotator.uniformer import UniformerDetector
 from annotator.util import resize_image, HWC3
 
+import cv2
+
 def create_detector(model_name): 
     
     detectors = {
@@ -14,9 +16,9 @@ def create_detector(model_name):
         'hed': HEDdetector(),
         'scribble': 'no detector required',
         'openpose': OpenposeDetector(),
-        #'seg': UniformerDetector(),
         'depth': MidasDetector(),
-        'normal': MidasDetector()
+        'normal': MidasDetector(),
+        #'seg': UniformerDetector(),
     }
 
     detector = detectors[model_name]
