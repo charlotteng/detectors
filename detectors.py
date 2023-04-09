@@ -36,7 +36,7 @@ def controlnet_map(model_name, detector, input_image, opts):
     detected_map = HWC3(detected_map)
 
   #depth / hed
-  if model_name == "depth" or model_name == "hed":
+  if model_name == "depth":
     
     input_image = HWC3(input_image)
     detected_map, _ = detector(resize_image(input_image, opts.detect_resolution))
@@ -48,6 +48,19 @@ def controlnet_map(model_name, detector, input_image, opts):
     detected_map = cv2.resize(detected_map,
                               (W, H),
                               interpolation=cv2.INTER_NEAREST)
+  #hed
+  if model_name == "hed":
+    
+    input_image = HWC3(input_image)
+    detected_map = detector(resize_image(input_image, opts.detect_resolution))
+    detected_map = HWC3(detected_map)
+
+    img = resize_image(input_image, opts.image_resolution)
+    H, W, C = img.shape
+
+    detected_map = cv2.resize(detected_map,
+                              (W, H),
+                              interpolation=cv2.INTER_LINEAR)
 
   #hough
   if model_name == "mlsd":
