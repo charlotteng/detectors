@@ -36,7 +36,7 @@ def controlnet_map(model_name, detector, input_image, opts):
     detected_map = HWC3(detected_map)
 
   #depth / hed
-  if model_name == "depth":
+  elif model_name == "depth":
     
     input_image = HWC3(input_image)
     detected_map, _ = detector(resize_image(input_image, opts.detect_resolution))
@@ -48,8 +48,8 @@ def controlnet_map(model_name, detector, input_image, opts):
     detected_map = cv2.resize(detected_map,
                               (W, H),
                               interpolation=cv2.INTER_NEAREST)
-  #hed
-  if model_name == "hed":
+
+  elif model_name == "hed":
     
     input_image = HWC3(input_image)
     detected_map = detector(resize_image(input_image, opts.detect_resolution))
@@ -61,9 +61,8 @@ def controlnet_map(model_name, detector, input_image, opts):
     detected_map = cv2.resize(detected_map,
                               (W, H),
                               interpolation=cv2.INTER_LINEAR)
-
   #hough
-  if model_name == "mlsd":
+  elif model_name == "mlsd":
     
     input_image = HWC3(input_image)
     detected_map = detector(
@@ -79,7 +78,7 @@ def controlnet_map(model_name, detector, input_image, opts):
                               interpolation=cv2.INTER_NEAREST)
   
   #normal  
-  if model_name == "normal":
+  elif model_name == "normal":
     
     input_image = HWC3(input_image)
     _, detected_map = detector(
@@ -95,7 +94,7 @@ def controlnet_map(model_name, detector, input_image, opts):
                               interpolation=cv2.INTER_LINEAR)
   
   #pose
-  if model_name == "openpose":
+  elif model_name == "openpose":
     input_image = HWC3(input_image)
     detected_map, _ = detector(resize_image(input_image, opts.detect_resolution))
     detected_map = HWC3(detected_map)
@@ -107,7 +106,7 @@ def controlnet_map(model_name, detector, input_image, opts):
                               interpolation=cv2.INTER_NEAREST)
 
   #scribble
-  if model_name == "scribble":
+  elif model_name == "scribble":
     
     img = resize_image(HWC3(input_image), opts.image_resolution)
     H, W, C = img.shape
@@ -116,7 +115,7 @@ def controlnet_map(model_name, detector, input_image, opts):
     detected_map[np.min(img, axis=2) < 127] = 255
 
   #seg
-  if model_name == "seg":
+  elif model_name == "seg":
     
     input_image = HWC3(input_image)
     detected_map = detector(resize_image(input_image, opts.detect_resolution))
@@ -129,7 +128,6 @@ def controlnet_map(model_name, detector, input_image, opts):
                               interpolation=cv2.INTER_NEAREST)
   
   return detected_map
-
 def dynamic_canny_threshold(input_image):
     
     gray = cv2.cvtColor(input_image, cv2.COLOR_RGB2GRAY)
